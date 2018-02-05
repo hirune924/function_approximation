@@ -52,7 +52,7 @@ def main(argv=None):
                 plt.figure()
                 plt.plot(rang, truth)
                 plt.plot(rang, pred)
-                plt.savefig('fig/'+'graph_'+str(i)+'.png')
+                plt.savefig('sin/'+'graph_'+str(i)+'.png')
 
 
 if __name__ == '__main__':
