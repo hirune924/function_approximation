@@ -34,6 +34,8 @@ def main(argv=None):
 
     train_step = training(losses)
 
+    saver = tf.train.Saver()
+
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
 
@@ -45,6 +47,7 @@ def main(argv=None):
                 loss_val = sess.run(losses, feed_dict={x: inp, y: target_func(inp)})
                 print ('Step:%d, Loss:%f' % (i, loss_val))
             if i % 10000 == 0:
+                saver.save(sess, 'sin/ckpt/model', global_step=i)
                 rang = np.arange(-np.pi, np.pi, 0.1)
                 rang2 = np.reshape(rang, (-1, 1))
                 truth = target_func(rang)

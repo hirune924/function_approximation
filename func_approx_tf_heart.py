@@ -50,20 +50,20 @@ def main(argv=None):
                 inp = (np.random.rand(batch_size, 1)-0.5)*2*np.sqrt(6)
                 loss_val = sess.run(losses, feed_dict={x: inp, y: target_func(inp)})
                 print ('Step:%d, Loss:%f' % (i, loss_val))
-            if i % 10000 == 0:
-                rang = np.arange(-np.sqrt(6.05), np.sqrt(6.05), 0.00001)
+            if i % 300 == 0:
+                rang = np.arange(-np.sqrt(6.3), np.sqrt(6.3), 0.00001)
                 rang2 = np.reshape(rang, (-1, 1))
                 truth1, truth2 = target_func(rang)
                 pred1, pred2 = sess.run(predict, feed_dict={x: rang2})
                 plt.figure()
                 #plt.plot(rang, truth1)
                 #plt.plot(rang, truth2)
-                plt.plot(rang2, pred1)
-                plt.plot(rang2, pred2)
-                plt.savefig('fig/'+'graph_'+str(i)+'.png')
+                plt.plot(rang2, pred1, "r")
+                plt.plot(rang2, pred2, "r")
+                plt.savefig('fig/'+'graph_'+str(i).rjust(8, '0')+'.png')
 
 
 if __name__ == '__main__':
-	main()
+    main()
 
 
